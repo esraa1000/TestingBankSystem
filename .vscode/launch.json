@@ -1,0 +1,17 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Launch JUnit Console",
+      "request": "launch",
+      "mainClass": "org.junit.platform.console.ConsoleLauncher",
+      "classPaths": [
+        "${workspaceFolder}/lib/junit-platform-console-standalone-1.14.1.jar",
+        "${workspaceFolder}/bin"
+      ],
+      "args": "--scan-classpath ${workspaceFolder}/bin",
+      "preLaunchTask": "Build Java"
+    }
+  ]
+}

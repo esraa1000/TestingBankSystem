@@ -216,14 +216,14 @@ public class IntegrationTest {
         
         // Both should produce same result for same input
         String serviceResult = service.deposit(acc, 100);
-        boolean processorResult = processor.processDeposit(acc, 100);
-        
+        assertEquals("Deposit successful", serviceResult);
         // After first deposit, balance is 400
         assertEquals(400, acc.getBalance());
-        
-        // Both operations should succeed
-        assertEquals("Deposit successful", serviceResult);
+
+        boolean processorResult = processor.processDeposit(acc, 100);
         assertTrue(processorResult);
+        // After both deposits, balance is 500
+        assertEquals(500, acc.getBalance());
     }
 
     // 15. Tests very large amount (boundary case)

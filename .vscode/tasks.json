@@ -1,0 +1,41 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build Java",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-File",
+        ".vscode/scripts/build.ps1"
+      ],
+      "problemMatcher": [],
+      "group": { "kind": "build", "isDefault": true }
+    },
+    {
+      "label": "Run JUnit tests",
+      "type": "shell",
+      "command": "java",
+      "args": [
+        "-jar",
+        "${workspaceFolder}/lib/junit-platform-console-standalone-1.14.1.jar",
+        "execute",
+        "--class-path",
+        "${workspaceFolder}/bin",
+        "--select-package",
+        "test",
+        "--select-class",
+        "AccountTest",
+        "--select-class",
+        "TransactionTest",
+        "-e",
+        "junit-jupiter",
+        "--details",
+        "tree"
+      ],
+      "presentation": { "reveal": "always", "panel": "shared" },
+      "dependsOn": ["Build Java"]
+    }
+  ]
+}
